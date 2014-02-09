@@ -1,0 +1,12 @@
+{
+  "name": "<%= _.slugify(appname) %>",
+  "private": true,
+  "dependencies": {<% if (includeBootstrap) { %>
+    "bootstrap": "~3.0.3",<% } if (includeModernizr) { %>
+    "modernizr": "~2.6.2",<% } %> <% if (includeRequire) { %>
+    "requirejs": "~2.1.8",
+    "requirejs-text": "~2.0.10", <% } %>
+    "kendo-ui": "~2013.3.1119"
+  },
+  "devDependencies": {}
+}

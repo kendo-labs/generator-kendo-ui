@@ -1,0 +1,41 @@
+{
+  "name": "generator-kendo-ui",
+  "version": "0.0.1",
+  "description": "A Kendo UI generator for Yeoman",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://www.telerik.com/kendo-ui",
+  "bugs": "https://github.com/burkeholland/generator-kendo-ui/issues",
+  "author": {
+    "name": "Burke Holland",
+    "email": "burkeholland@gmail.com",
+    "url": "https://github.com/burkeholland"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kendo-labs/generator-kendo-ui.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.14.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.14.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <% if (includeBootstrap) { %><link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"><% } %>
+  <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui/styles/kendo.common<% if (includeBootstrap) { %>-bootstrap<% } %>.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui/styles/kendo.<% if (includeBootstrap) { %>bootstrap<% } else { %>default<% } %>.min.css">
+</head>
+<body>
+
+  <h2>You've got Kendo UI!</h2>
+
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="bower_components/kendo-ui/js/kendo.web.min.js"></script>
+
+</body>
+</html>

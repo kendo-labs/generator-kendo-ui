@@ -1,0 +1,101 @@
+'use strict';
+var util = require('util');
+var path = require('path');
+var yeoman = require('yeoman-generator');
+
+
+var KendoUIGenerator = module.exports = function KendoUIGenerator(args, options, config) {
+  yeoman.generators.Base.apply(this, arguments);
+
+  this.on('end', function () {
+    this.installDependencies({ skipInstall: options['skip-install'] });
+  });
+
+  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+};
+
+util.inherits(KendoUIGenerator, yeoman.generators.Base);
+
+KendoUIGenerator.prototype.askFor = function askFor() {
+  var cb = this.async();
+
+  // have Yeoman greet the user.
+  console.log(this.yeoman);
+
+  var prompts = [{
+    type: 'checkbox',
+    name: 'features',
+    message: 'Out of the box, you get the following...',
+    choices: [{
+      name: 'Bootstrap',
+      value: 'includeBootstrap',
+      checked: true
+    }, {
+      name: 'Modernizr',
+      value: 'includeModernizr',
+      checked: true
+    }, {
+      name: 'Require',
+      value: 'includeRequire',
+      checked: true
+    }]
+  }];
+
+  this.prompt(prompts, function (answers) {
+    var features = answers.features;
+
+    function hasFeature(feat) { return features.indexOf(feat) !== -1; }
+
+    this.includeBootstrap = hasFeature('includeBootstrap');
+    this.includeModernizr = hasFeature('includeModernizr');
+    this.includeRequire = hasFeature('includeRequire');
+    
+    cb();
+  }.bind(this));
+};
+
+KendoUIGenerator.prototype.gruntfile = function gruntfile() {
+  this.template('Gruntfile.js');
+};
+
+KendoUIGenerator.prototype.packageJSON = function packageJSON() {
+  this.template('_package.json', 'package.json');
+};
+
+KendoUIGenerator.prototype.git = function git() {
+  this.copy('gitignore', '.gitignore');
+  this.copy('gitattributes', '.gitattributes');
+};
+
+KendoUIGenerator.prototype.bower = function bower() {
+  this.copy('bowerrc', '.bowerrc');
+  this.copy('_bower.json', 'bower.json');
+};
+
+KendoUIGenerator.prototype.jshint = function jshint() {
+  this.copy('jshintrc', '.jshintrc');
+};
+
+KendoUIGenerator.prototype.editorConfig = function editorConfig() {
+  this.copy('editorConfig', '.editorConfig');
+};
+ 
+KendoUIGenerator.prototype.app = function writeIndex() {
+  this.mkdir('app');
+  this.mkdir('app/scripts');
+  this.mkdir('app/styles');
+  this.mkdir('app/images');
+  this.copy('index.html', 'app/index.html');
+};
+
+KendoUIGenerator.prototype.install = function () {
+
+  var done = this.async();
+
+  this.installDependencies({
+    calldback: done
+  });
+
+};
+
+
