@@ -18,9 +18,9 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // Configurable paths
-      app: 'app',
-      dist: 'dist'
+      app: 'app'
     },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
@@ -58,29 +58,7 @@ module.exports = function (grunt) {
             '<%%= yeoman.app %>'
           ]
         }
-      },
-      dist: {
-        options: {
-          open: true,
-          base: '<%%= yeoman.dist %>',
-          livereload: false
-        }
       }
-    },
-
-    // Empties folders to start fresh
-    clean: {
-      dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%%= yeoman.dist %>/*',
-            '!<%%= yeoman.dist %>/.git*'
-          ]
-        }]
-      },
-      server: '.tmp'
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -102,21 +80,8 @@ module.exports = function (grunt) {
         force: true
       },
       files: [ '<%$= yeoman.app %>/scripts/{,*/}*.js', '<%$= yeoman.app %>/{,*/}*.html' ]
-    },
+    }
 
-  <% if (includeModernizr) { %>
-    // Generates a custom Modernizr build that includes only the tests you
-    // reference in your app
-    modernizr: {
-      devFile: '<%%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-      outputFile: '<%%= yeoman.dist %>/scripts/vendor/modernizr.js',
-      files: [
-        '<%%= yeoman.dist %>/scripts/{,*/}*.js',
-        '<%%= yeoman.dist %>/styles/{,*/}*.css',
-        '!<%%= yeoman.dist %>/scripts/vendor/*'
-      ],
-      uglify: true
-    }<% } %>
   });
 
   grunt.registerTask('serve', function (target) {
@@ -125,7 +90,6 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
       'connect:livereload',
       'watch'
     ]);
@@ -136,10 +100,7 @@ module.exports = function (grunt) {
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
-  grunt.registerTask('build', [
-    <% if (includeModernizr) { %>
-    'modernizr'<% } %>
-  ]);
+  grunt.registerTask('build', []);
 
   grunt.registerTask('default', [
     'newer:jshint',

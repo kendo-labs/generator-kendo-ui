@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <% if (includeModernizr) { %><script src="bower_components/modernizr/modernizr.js"></script><% } %>
   <% if (includeBootstrap) { %><link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"><% } %>
   <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui/styles/kendo.common<% if (includeBootstrap) { %>-bootstrap<% } %>.min.css">
   <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui/styles/kendo.<% if (includeBootstrap) { %>bootstrap<% } else { %>default<% } %>.min.css">
