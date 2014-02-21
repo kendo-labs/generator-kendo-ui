@@ -10,10 +10,11 @@
 </head>
 <body>
 
-  <h2>You've got Kendo UI!</h2>
+  <% if (scaffoldSpa) { %><div id="root"></div><% } else { %><h2>You've got Kendo UI!</h2><% } %>
 
   <script src="bower_components/jquery/jquery.min.js"></script>
   <script src="bower_components/kendo-ui/js/kendo.web.min.js"></script>
+  <% if (includeRequire && scaffoldSpa) { %><script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script><% } %>
 
 </body>
 </html>

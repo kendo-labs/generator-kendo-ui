@@ -39,6 +39,11 @@ KendoUIGenerator.prototype.askFor = function askFor() {
       value: 'includeRequire',
       checked: true
     }]
+  }, {
+    type: 'confirm',
+    name: 'scaffoldSpa',
+    message: 'Do you want me to scaffold a SPA for you?',
+    default: false
   }];
 
   this.prompt(prompts, function (answers) {
@@ -49,7 +54,8 @@ KendoUIGenerator.prototype.askFor = function askFor() {
     this.includeBootstrap = hasFeature('includeBootstrap');
     this.includeModernizr = hasFeature('includeModernizr');
     this.includeRequire = hasFeature('includeRequire');
-    
+    this.scaffoldSpa = answers.scaffoldSpa;
+
     cb();
   }.bind(this));
 };
@@ -86,6 +92,18 @@ KendoUIGenerator.prototype.app = function writeIndex() {
   this.mkdir('app/styles');
   this.mkdir('app/images');
   this.copy('index.html', 'app/index.html');
+
+  if (this.scaffoldSpa) {
+    this.copy('spa/main.js', 'app/scripts/main.js');
+    this.copy('spa/app/app.js', 'app/scripts/app.js');
+    this.mkdir('app/scripts');
+    this.mkdir('app/scripts/views');
+    this.mkdir('app/scripts/views/layout');
+    this.copy('spa/app/views/layout/layout.html', 'app/scripts/views/layout/layout.html');
+    this.copy('spa/app/views/layout/layout.js', 'app/scripts/views/layout/layout.js');
+    this.directory('spa/app/views/home', 'app/scripts/views/home');
+    this.directory('spa/app/views/details', 'app/scripts/views/details');
+  }
 };
 
 KendoUIGenerator.prototype.install = function () {

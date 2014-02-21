@@ -103,7 +103,6 @@ module.exports = function (grunt) {
   grunt.registerTask('build', []);
 
   grunt.registerTask('default', [
-    'newer:jshint',
     'newer:kendo_lint',
     'build'
   ]);
