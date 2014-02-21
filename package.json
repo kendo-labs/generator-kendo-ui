@@ -1,6 +1,6 @@
 {
   "name": "generator-kendo-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Kendo UI generator for Yeoman",
   "keywords": [
     "yeoman-generator"

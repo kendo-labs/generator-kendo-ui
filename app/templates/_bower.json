@@ -6,7 +6,8 @@
     "modernizr": "~2.6.2",<% } %> <% if (includeRequire) { %>
     "requirejs": "~2.1.8",
     "requirejs-text": "~2.0.10", <% } %>
-    "kendo-ui": "~2013.3.1119"
+    "kendo-ui": "~2013.3.1119",
+    "jquery-tiny-pubsub": "~0.7.0"
   },
   "devDependencies": {}
 }

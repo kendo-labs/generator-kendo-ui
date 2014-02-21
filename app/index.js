@@ -103,6 +103,7 @@ KendoUIGenerator.prototype.app = function writeIndex() {
     this.copy('spa/app/views/layout/layout.js', 'app/scripts/views/layout/layout.js');
     this.directory('spa/app/views/home', 'app/scripts/views/home');
     this.directory('spa/app/views/details', 'app/scripts/views/details');
+    this.copy('app.build.js', 'app.build.js');
   }
 };
 

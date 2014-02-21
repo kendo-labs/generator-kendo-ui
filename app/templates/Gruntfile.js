@@ -80,6 +80,19 @@ module.exports = function (grunt) {
         force: true
       },
       files: [ '<%$= yeoman.app %>/scripts/{,*/}*.js', '<%$= yeoman.app %>/{,*/}*.html' ]
+    },
+
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: './app/scripts',
+          paths: {
+            text: '../bower_components/requirejs-text/text'
+          },
+          name: 'main', // assumes a production build using almond
+          out: 'app/scripts/main-built.js'
+        }
+      }
     }
 
   });
@@ -100,7 +113,9 @@ module.exports = function (grunt) {
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
-  grunt.registerTask('build', []);
+  grunt.registerTask('build', [
+    'requirejs'
+  ]);
 
   grunt.registerTask('default', [
     'newer:kendo_lint',
