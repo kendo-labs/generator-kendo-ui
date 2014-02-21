@@ -1,4 +1,4 @@
-# generator-kendo-ui [![Build Status](https://secure.travis-ci.org/burkeholland/generator-kendo-ui.png?branch=master)](https://travis-ci.org/burkeholland/generator-kendo-ui)
+# generator-kendo-ui
 
 A generator for [Yeoman](http://yeoman.io).
 
