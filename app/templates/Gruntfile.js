@@ -82,26 +82,32 @@ module.exports = function (grunt) {
       files: [ '<%$= yeoman.app %>/scripts/{,*/}*.js', '<%$= yeoman.app %>/{,*/}*.html' ]
     },
 
+    <% if ( includeRequire && scaffoldSpa ) { %>
     requirejs: {
       compile: {
         options: {
-          baseUrl: './app/scripts',
+          appDir: './app/scripts',
+          baseUrl: '.',
+          dir: './app/scripts/build/',
           paths: {
-            text: '../bower_components/requirejs-text/text'
+            'kendo': 'vendor/kendo/kendo',
+            'text': '../bower_components/requirejs-text/text',
+            'plugins': 'vendor/plugins/plugins',
+            'bootstrap': 'vendor/bootstrap/bootstrap'
           },
-          name: 'main', // assumes a production build using almond
-          out: 'app/scripts/main-built.js'
+          modules: [
+          {
+            name: 'main',
+          }
+         ]
         }
       }
     }
+    <% } %>
 
   });
 
   grunt.registerTask('serve', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }
-
     grunt.task.run([
       'connect:livereload',
       'watch'
@@ -113,13 +119,17 @@ module.exports = function (grunt) {
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
+  <% if ( includeRequire && scaffoldSpa ) { %>
   grunt.registerTask('build', [
     'requirejs'
   ]);
+  <% } %>
 
   grunt.registerTask('default', [
-    'newer:kendo_lint',
-    'build'
+    'newer:kendo_lint'
+    <% if ( includeRequire && scaffoldSpa ) { %> 
+    ,'build'
+    <% } %>
   ]);
 
 };

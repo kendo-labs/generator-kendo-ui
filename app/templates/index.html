@@ -5,17 +5,17 @@
   <title></title>
   <% if (includeModernizr) { %><script src="bower_components/modernizr/modernizr.js"></script><% } %>
   <% if (includeBootstrap) { %><link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"><% } %>
-  <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui/styles/kendo.common<% if (includeBootstrap) { %>-bootstrap<% } %>.min.css">
-  <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui/styles/kendo.<% if (includeBootstrap) { %>bootstrap<% } else { %>default<% } %>.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui-core/styles/web/kendo.common<% if (includeBootstrap) { %>-bootstrap<% } %>.core.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/kendo-ui-core/styles/web/kendo.<% if (includeBootstrap) { %>bootstrap<% } else { %>default<% } %>.min.css">
 </head>
 <body>
 
   <% if (scaffoldSpa) { %><div id="root"></div><% } else { %><h2>You've got Kendo UI!</h2><% } %>
 
   <script src="bower_components/jquery/jquery.min.js"></script>
-  <script src="bower_components/kendo-ui/js/kendo.web.min.js"></script>
-  <script src="bower_components/jquery-tiny-pubsub/dist/ba-tiny-pubsub.min.js"></script>
-  <% if (includeRequire && scaffoldSpa) { %><script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script><% } %>
+  
+  <% if (includeRequire && scaffoldSpa) { %><script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script><% } else { %><script src="bower_components/kendo-ui-core/js/kendo.ui.core.min.js"></script><% } %>
+  
 
 </body>
 </html>

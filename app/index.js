@@ -88,22 +88,23 @@ KendoUIGenerator.prototype.editorConfig = function editorConfig() {
  
 KendoUIGenerator.prototype.app = function writeIndex() {
   this.mkdir('app');
-  this.mkdir('app/scripts');
   this.mkdir('app/styles');
   this.mkdir('app/images');
   this.copy('index.html', 'app/index.html');
 
   if (this.scaffoldSpa) {
-    this.copy('spa/main.js', 'app/scripts/main.js');
-    this.copy('spa/app/app.js', 'app/scripts/app.js');
-    this.mkdir('app/scripts');
-    this.mkdir('app/scripts/views');
-    this.mkdir('app/scripts/views/layout');
-    this.copy('spa/app/views/layout/layout.html', 'app/scripts/views/layout/layout.html');
-    this.copy('spa/app/views/layout/layout.js', 'app/scripts/views/layout/layout.js');
-    this.directory('spa/app/views/home', 'app/scripts/views/home');
-    this.directory('spa/app/views/details', 'app/scripts/views/details');
-    this.copy('app.build.js', 'app.build.js');
+    this.directory('spa', 'app/scripts');
+    this.template('spa/main.js', 'app/scripts/main.js');
+    // this.copy('spa/main.js', 'app/scripts/main.js');
+    // this.copy('spa/app/app.js', 'app/scripts/app.js');
+    // this.mkdir('app/scripts');
+    // this.mkdir('app/scripts/views');
+    // this.mkdir('app/scripts/views/layout');
+    // this.copy('spa/app/views/layout/layout.html', 'app/scripts/views/layout/layout.html');
+    // this.copy('spa/app/views/layout/layout.js', 'app/scripts/views/layout/layout.js');
+    // this.directory('spa/app/views/home', 'app/scripts/views/home');
+    // this.directory('spa/app/views/details', 'app/scripts/views/details');
+    // this.copy('app.build.js', 'app.build.js');
   }
 };
 

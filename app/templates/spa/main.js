@@ -1,13 +1,17 @@
 require.config({
   paths: {
-    'text': '../bower_components/requirejs-text/text'
-  }
+    'kendo': 'vendor/kendo/kendo',
+    <% if ( includeBootstrap ) { %>'bootstrap': 'vendor/bootstrap/bootstrap', <% } %>
+    'text': '../../bower_components/requirejs-text/text',
+    'plugins': 'vendor/plugins/plugins'
+  },
+  baseUrl: 'scripts'
 });
 
-require([
-  'app'
-], function (app) {
+require([ 'kendo',<% if ( includeBootstrap ) { %>'bootstrap',<% } %> 'text', 'plugins' ], function (app) {
 
-  app.init();
+  require(['app'], function(app) {
+    app.init();
+  })
 
 });
